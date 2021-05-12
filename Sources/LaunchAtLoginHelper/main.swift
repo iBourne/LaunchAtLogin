@@ -16,7 +16,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		let pathComponents = (Bundle.main.bundlePath as NSString).pathComponents
 		let mainPath = NSString.path(withComponents: Array(pathComponents[0...(pathComponents.count - 5)]))
 		NSWorkspace.shared.launchApplication(mainPath)
-		NSApp.terminate(nil)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+			NSApp.terminate(nil)
+		}
 	}
 }
 
